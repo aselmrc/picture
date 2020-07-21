@@ -31,6 +31,24 @@ const modals = () => {
         })
     }
 
+    function showModalByTime(selector, time) {
+        setTimeout(() => {
+            let display;
+
+            document.querySelectorAll('[data-modal]').forEach(item => {
+                if (getComputedStyle(item).display !== "none") {
+                    display = "block"
+                }
+            });
+
+            if (!display) {
+                document.querySelector(selector).style.display = "block";
+                document.body.style.overflow = "";
+            }
+        }, time)
+
+    }
+
     function calcScroll() {
         let div = document.createElement('div');
 
@@ -50,6 +68,7 @@ const modals = () => {
     bindModal('.button-design', '.popup-design', '.popup-design .popup-close');
     bindModal('.button-consultation', '.popup-consultation', '.popup-consultation .popup-close');
     bindModal('.fixed-gift', '.popup-gift', '.popup-gift .popup-close');
+    showModalByTime('.popup-consultation', 5000)
 }
 
 export default modals;
