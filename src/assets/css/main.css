@@ -1261,6 +1261,13 @@ h4 {
 .status {
   text-align: center;
 }
+
+.styles-messageBlock {
+  width: 100%;
+  font-size: 26px;
+  color: #ac2925;
+  text-align: center;
+}
 @media (max-width: 1399px) {
   .paints {
     display: none;
