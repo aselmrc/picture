@@ -18,10 +18,12 @@ const calc = (size, material, options, promocode, result, state) => {
             resultBlock.textContent = sum;
         }
 
-
+        state.form = sizeBlock.value;
+        state.material = materialBlock.value;
+        state.options = materialBlock.value;
+        state.promocode = promocodeBlock.value || '';
+        state.result = sum;
     };
-
-
 
     sizeBlock.addEventListener('change', calcFunc);
     materialBlock.addEventListener('change', calcFunc);

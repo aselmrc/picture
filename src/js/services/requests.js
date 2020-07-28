@@ -9,6 +9,7 @@ const postData = async (url, data) => {
 };
 
 const getResource = async (url) => {
+    console.log(url)
     let res = await fetch();
 
     if(!res.ok) {
