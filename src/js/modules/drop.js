@@ -65,27 +65,26 @@ const drop = () => {
             const name = arr[0].substring(0, 6) + dots + arr[1];
             input.previousElementSibling.textContent = name;
 
-
-            const formData = new FormData();
-            formData.append('file', input.files[0]);
-            console.log(formData.getAll('file'));
-
-            let api;
-            input.closest('.popup-design') || input.classList.contains('calc_form') ? api = path.designer : api = path.question;
-
-            postData('assets/server.php', formData)
-                .then(res => console.log(res))
-                .catch((e) => console.log(e))
+            submitImage(input.files[0]);
         });
     });
 
-    // fileInputs.forEach(input => {
-    //     if (input.closest('.calc_form')) {
-    //         input.addEventListener('input', function() {
-    //             console.log(input)
-    //         });
-    //     }
-    // });
+    fileInputs.forEach(input => {
+        if (input.closest('.calc_form')) {
+            input.addEventListener('change', function() {
+                submitImage(input.files[0]);
+            });
+        }
+    });
+
+    function submitImage(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        postData('assets/server.php', formData)
+            .then(res => console.log(res))
+            .catch((e) => console.log(e))
+    }
 };
 
 export default drop;
